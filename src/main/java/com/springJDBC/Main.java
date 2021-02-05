@@ -22,6 +22,6 @@ public class Main {
         // updating in Database using DAO layer
         Student student = new Student(1, "Akhilesh Garg", "Gurugram, Haryana");
         System.out.println(dao.update(student));
-        System.out.println(dao.update(15, "Shubham", "Gurugram, Haryana, India"));
+        System.out.println(dao.update(15, "Shubham Yadav", "Gurugram, Haryana, India"));
     }
 }
