@@ -1,4 +1,4 @@
-package com.springJDBC;
+package com.springJDBC.dao;
 
 public class Student {
     private int id;
