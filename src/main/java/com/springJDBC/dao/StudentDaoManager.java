@@ -22,12 +22,23 @@ public class StudentDaoManager implements StudentDAO {
 
     @Override
     public int delete(int id) {
-        String query = "DELETE FROM student WHERE id=(?)";
+        String query = "DELETE FROM student WHERE id=?";
         return this.jdbcTemplate.update(query, id);
     }
 
     @Override
     public int delete(Student student) {
         return this.delete(student.getId());
+    }
+
+    @Override
+    public int update(int id, String name, String address) {
+        String query = "UPDATE student SET name=?, address=? WHERE ID=?;";
+        return this.jdbcTemplate.update(query, name, address, id);
+    }
+
+    @Override
+    public int update(Student student) {
+        return this.update(student.getId(), student.getName(), student.getAddress());
     }
 }

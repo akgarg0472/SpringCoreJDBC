@@ -11,9 +11,17 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("JDBCConfig.xml");
         StudentDAO dao = context.getBean("studentDaoManager", StudentDaoManager.class);
-        System.out.println(dao.delete(1));
-        System.out.println(dao.delete(2));
+
+        // insertion in Database using DAO layer
         System.out.println(dao.insert(new Student(1, "Akhilesh Garg", "Haryana")));
+
+        // deletion in Database using DAO layer
+        System.out.println(dao.delete(1));
         System.out.println(dao.delete(new Student(1, "Akhilesh Garg", "Haryana")));
+
+        // updating in Database using DAO layer
+        Student student = new Student(1, "Akhilesh Garg", "Gurugram, Haryana");
+        System.out.println(dao.update(student));
+        System.out.println(dao.update(15, "Shubham", "Gurugram, Haryana, India"));
     }
 }
