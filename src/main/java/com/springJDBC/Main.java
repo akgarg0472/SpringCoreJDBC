@@ -15,19 +15,19 @@ public class Main {
         StudentDAO dao = context.getBean("studentDaoManager", StudentDaoManager.class);
 
 //        // insertion in Database using DAO layer
-//        System.out.println(dao.insert(new Student(1, "Akhilesh Garg", "Haryana")));
+        System.out.println(dao.insert(new Student(1, "Akhilesh Garg", "Haryana")));
 //
 //        // deletion in Database using DAO layer
-//        System.out.println(dao.delete(1));
-//        System.out.println(dao.delete(new Student(1, "Akhilesh Garg", "Haryana")));
+        System.out.println(dao.delete(1));
+        System.out.println(dao.delete(new Student(1, "Akhilesh Garg", "Haryana")));
 //
 //        // updating in Database using DAO layer
-//        Student student = new Student(1, "Akhilesh Garg", "Gurugram, Haryana");
-//        System.out.println(dao.update(student));
-//        System.out.println(dao.update(15, "Shubham Yadav", "Gurugram, Haryana, India"));
+        Student student = new Student(1, "Akhilesh Garg", "Gurugram, Haryana");
+        System.out.println(dao.update(student));
+        System.out.println(dao.update(15, "Shubham Yadav", "Gurugram, Haryana, India"));
 
 //        performing select query using DAO layer
-        System.out.println(dao.getStudent(11));
+        System.out.println(dao.getStudent(1));
         List<Student> studentList = dao.getAllStudents();
         for (Student s : studentList) {
             System.out.println(s);
