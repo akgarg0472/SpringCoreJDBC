@@ -3,6 +3,8 @@ package com.springJDBC.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StudentDaoManager implements StudentDAO {
     private final JdbcTemplate jdbcTemplate;
@@ -48,7 +50,13 @@ public class StudentDaoManager implements StudentDAO {
     public Student getStudent(int studentId) {
         String query = "SELECT * FROM student where ID=?;";
         StudentRowMapper rowMapper = new StudentRowMapper();
-        Student student = this.jdbcTemplate.queryForObject(query, rowMapper, studentId);
+        Student student = null;
+        try {
+            student = this.jdbcTemplate.queryForObject(query, rowMapper, studentId);
+        } catch (Exception e) {
+            // TODO according to requirement
+            Logger.getLogger("NoStudentFound").log(Level.WARNING, "No Student found with id=" + studentId);
+        }
         return student;
     }
 
@@ -56,6 +64,7 @@ public class StudentDaoManager implements StudentDAO {
     public List<Student> getAllStudents() {
         String query = "SELECT * FROM student;";
         StudentRowMapper rowMapper = new StudentRowMapper();
-        return this.jdbcTemplate.query(query, rowMapper);
+        List<Student> result = this.jdbcTemplate.query(query, rowMapper);
+        return result == null ? null : result;
     }
 }

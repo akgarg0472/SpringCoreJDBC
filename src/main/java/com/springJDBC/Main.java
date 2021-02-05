@@ -27,7 +27,7 @@ public class Main {
 //        System.out.println(dao.update(15, "Shubham Yadav", "Gurugram, Haryana, India"));
 
 //        performing select query using DAO layer
-//        System.out.println(dao.getStudent(1));
+        System.out.println(dao.getStudent(11));
         List<Student> studentList = dao.getAllStudents();
         for (Student s : studentList) {
             System.out.println(s);
